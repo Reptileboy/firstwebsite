@@ -1,0 +1,261 @@
+/* Complementary colors: navy blue (#173b63) and orange (#f5a24b). */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f1f5f9;
+  color: #25364a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Type selector; box model example 1: header. */
+header {
+  margin: 0 0 2rem;
+  padding: 3rem max(1.25rem, calc((100% - 960px) / 2));
+  border-bottom: 6px solid #f5a24b;
+  background: #173b63;
+  color: #ffffff;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+h2 {
+  margin-top: 0;
+  color: #173b63;
+  font-size: 1.65rem;
+}
+
+h3 {
+  margin-top: 0;
+  color: #173b63;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #f5a24b;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover, nav a:focus-visible {
+  background: #f5a24b;
+  color: #173b63;
+}
+
+a {
+  color: #173b63;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid #f5a24b;
+  outline-offset: 4px;
+}
+
+main {
+  width: min(960px, calc(100% - 2.5rem));
+  margin: 0 auto;
+}
+
+/* Box model example 2: each main section. */
+section {
+  margin: 0 0 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid #cad6e2;
+  border-radius: 12px;
+  background: #ffffff;
+  scroll-margin-top: 1rem;
+}
+
+figure {
+  margin: 1.5rem 0 0;
+  padding: 1rem;
+  border: 1px solid #cad6e2;
+  border-radius: 8px;
+  background: #f1f5f9;
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  color: #455870;
+  font-size: 0.95rem;
+}
+
+/* Class selector; box model example 3: each technology card. */
+.topic-card {
+  margin: 1rem 0 0;
+  padding: 1.25rem;
+  border: 1px solid #cad6e2;
+  border-left: 5px solid #f5a24b;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.topic-card p {
+  margin-bottom: 0;
+}
+
+/* ID selector; box model example 4: the practice plan. */
+#practice-plan {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border: 2px solid #f5a24b;
+  background: #fff5e8;
+}
+
+ol {
+  margin: 1rem 0 0;
+  padding-left: 1.5rem;
+}
+
+ol li {
+  padding-left: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+ol li::marker {
+  color: #173b63;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 2rem 1.25rem;
+  border-top: 4px solid #f5a24b;
+  background: #173b63;
+  color: #ffffff;
+  text-align: center;
+}
+
+footer p:last-child {
+  margin-bottom: 0;
+}
+
+footer a {
+  color: #ffd6a6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Responsive layout: one column by default for small screens. */
+body {
+  overflow-wrap: anywhere;
+}
+
+main {
+  width: min(1100px, calc(100% - 2rem));
+}
+
+nav ul {
+  flex-direction: column;
+}
+
+nav a {
+  display: block;
+  text-align: center;
+}
+
+#building-blocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+#building-blocks > h2,
+#building-blocks > p {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.topic-card {
+  min-width: 0;
+  margin: 0;
+}
+
+#practice-plan {
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Tablet: navigation becomes a row; cards use two columns. */
+@media (min-width: 640px) {
+  nav ul {
+    flex-direction: row;
+  }
+
+  #building-blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: three cards fit across; intro text sits beside the image. */
+@media (min-width: 1024px) {
+  header {
+    padding-inline: max(1.25rem, calc((100% - 1100px) / 2));
+  }
+
+  #building-blocks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #why-learn {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  #why-learn h2,
+  #why-learn > p {
+    grid-column: 1;
+  }
+
+  #why-learn figure {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    min-width: 0;
+    margin: 0;
+  }
+}
